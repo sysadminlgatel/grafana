@@ -8,6 +8,7 @@ const DEFAULT_EXPLORE_STATE: ExploreState = {
   datasourceLoading: null,
   datasourceMissing: false,
   datasourceName: '',
+  exploreDatasources: [],
   graphResult: null,
   history: [],
   latency: 0,
