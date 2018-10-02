@@ -5,7 +5,6 @@ export interface Range {
 
 export interface Query {
   query: string;
-  edited?: boolean;
   key?: string;
 }
 
