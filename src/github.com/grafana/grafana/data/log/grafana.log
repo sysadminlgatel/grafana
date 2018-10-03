@@ -233,3 +233,42 @@ t=2018-10-03T14:00:09+0800 lvl=info msg="Stopped TracingService" logger=server r
 t=2018-10-03T14:00:09+0800 lvl=info msg="Stopped AlertingService" logger=server reason="context canceled"
 t=2018-10-03T14:00:09+0800 lvl=info msg="Stopped HTTPServer" logger=server reason=nil
 t=2018-10-03T14:00:09+0800 lvl=eror msg="Server shutdown" logger=server reason="System signal: interrupt"
+t=2018-10-03T15:33:34+0800 lvl=info msg="Starting Grafana" logger=server version=5.3.0-pre1 commit=4a77a62 compiled=2018-10-03T03:38:08+0800
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config loaded from" logger=settings file=/opt/grafana/src/github.com/grafana/grafana/conf/defaults.ini
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config loaded from" logger=settings file=/opt/grafana/src/github.com/grafana/grafana/conf/defaults.ini
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.data=/opt/grafana/src/github.com/grafana/grafana/data"
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.logs=/var/log/grafana/"
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.plugins=/opt/grafana/src/github.com/grafana/grafana/data/plugins"
+t=2018-10-03T15:33:34+0800 lvl=info msg="Config overridden from command line" logger=settings arg="default.paths.provisioning="
+t=2018-10-03T15:33:34+0800 lvl=info msg="Path Home" logger=settings path=/opt/grafana/src/github.com/grafana/grafana
+t=2018-10-03T15:33:34+0800 lvl=info msg="Path Data" logger=settings path=/opt/grafana/src/github.com/grafana/grafana/data
+t=2018-10-03T15:33:34+0800 lvl=info msg="Path Logs" logger=settings path=/opt/grafana/src/github.com/grafana/grafana/data/log
+t=2018-10-03T15:33:34+0800 lvl=info msg="Path Plugins" logger=settings path=/opt/grafana/src/github.com/grafana/grafana/data/plugins
+t=2018-10-03T15:33:34+0800 lvl=info msg="Path Provisioning" logger=settings path=/opt/grafana/src/github.com/grafana/grafana/conf/provisioning
+t=2018-10-03T15:33:34+0800 lvl=info msg="App mode production" logger=settings
+t=2018-10-03T15:33:34+0800 lvl=info msg="Writing PID file" logger=server path=/opt/grafana/src/github.com/grafana/grafana/bin/grafana-server.pid pid=6284
+t=2018-10-03T15:33:34+0800 lvl=info msg="Initializing SqlStore" logger=server
+t=2018-10-03T15:33:34+0800 lvl=info msg="Connecting to DB" logger=sqlstore dbtype=sqlite3
+t=2018-10-03T15:33:34+0800 lvl=info msg="Starting DB migration" logger=migrator
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing HTTPServer" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing SearchService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing PluginManager" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Starting plugin search" logger=plugins
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name="Alarm Box"
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name="Datatable Panel"
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name="D3 Gauge"
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name="Pie Chart"
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name=Sensu
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name=Splunk
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name="Worldmap Panel"
+t=2018-10-03T15:33:35+0800 lvl=info msg="Registering plugin" logger=plugins name=Histogram
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing InternalMetricsService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing AlertingService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing CleanUpService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing NotificationService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing ProvisioningService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing RenderingService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing TracingService" logger=server
+t=2018-10-03T15:33:35+0800 lvl=info msg="Initializing Stream Manager"
+t=2018-10-03T15:33:35+0800 lvl=info msg="HTTP Server Listen" logger=http.server address=0.0.0.0:3000 protocol=http subUrl= socket=
+t=2018-10-03T15:34:58+0800 lvl=info msg="Request Completed" logger=context userId=1 orgId=1 uname=admin method=GET path=/logout status=302 remote_addr=192.168.2.68 time_ms=1 size=29 referer="http://192.168.2.58:3000/?orgId=1"
