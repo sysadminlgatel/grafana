@@ -6,7 +6,7 @@ $login-border: #8daac5;
   background-repeat: no-repeat;
   min-width: 100%;
   margin-left: 0;
-  background-color: $gray-4;
+  background-color: gray;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,9 @@ $login-border: #8daac5;
   }
   & .btn-primary {
     @include buttonBackground(#ff6600, #bc3e06);
+    width: 40%;
   }
+
 }
 
 input:-webkit-autofill,
@@ -54,7 +56,7 @@ select:-webkit-autofill:focus {
   opacity: 0.6;
   background: $black;
   color: #fbfbfb;
-
+  
   &:focus {
     border: 1px solid $login-border;
   }
@@ -102,36 +104,9 @@ select:-webkit-autofill:focus {
   position: relative;
   justify-content: center;
   z-index: 1;
-  min-height: 320px;
 }
 
-.login-branding {
-  width: 100%;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 0;
-  padding-top: 2rem;
 
-  .logo-icon {
-    width: 70px;
-    margin-bottom: 15px;
-  }
-
-  .icon-gf-grafana_wordmark {
-    color: darken($white, 11%);
-    position: relative;
-    font-size: 2rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.login-outer-box {
-  display: flex;
-  overflow-y: hidden;
-}
 
 .login-inner-box {
   text-align: center;
@@ -327,19 +302,13 @@ select:-webkit-autofill:focus {
     flex-direction: row;
   }
 
-  .login-branding {
-    width: 35%;
-    padding: 4rem 2rem;
-    border-right: 1px solid $login-border;
-
-    .logo-icon {
-      width: 80px;
-    }
-  }
-
+  
   .login-inner-box {
     width: 65%;
     padding: 1rem 2rem;
+    .logo-icon{
+      margin:0 0 1.75rem 4rem;
+    }
   }
 
   .login-divider {
@@ -358,23 +327,14 @@ select:-webkit-autofill:focus {
     flex: 1 0 100%;
   }
 
-  .login-branding {
-    width: 45%;
-    padding: 2rem 4rem;
-    flex-grow: 1;
-
-    .logo-icon {
-      width: 130px;
-    }
-
-    .icon-gf-grafana_wordmark {
-      font-size: 3.2rem;
-    }
-  }
 
   .login-inner-box {
     width: 55%;
     padding: 1rem 4rem;
+
+    .logo-icon {
+      margin:0 0 1.75rem 4rem;
+    }
   }
 
   .login-button-group {
