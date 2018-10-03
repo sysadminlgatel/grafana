@@ -1,11 +1,9 @@
 <div class="login container">
   <div class="login-content">
-    <div class="login-branding">
-      <img class="logo-icon" src="public/img/grafana_icon.svg" alt="Grafana" />
-      <i class="icon-gf icon-gf-grafana_wordmark"></i>
-    </div>
-    <div class="login-outer-box">
       <div class="login-inner-box" id="login-view">
+        <img class="logo-icon" src="public/img/lga_logo.png"/>
+        <div class="login-divider-line">
+            </div>
         <form name="loginForm" class="login-form-group gf-form-group" ng-hide="disableLoginForm">
           <div class="login-form">
             <input type="text" name="username" class="gf-form-input login-form-input" required ng-model='formModel.user' placeholder={{loginHint}}
@@ -16,14 +14,19 @@
               placeholder="password">
           </div>
           <div class="login-button-group">
-            <button type="submit" class="btn btn-large p-x-2" ng-if="!loggingIn" ng-click="submit();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-primary': loginForm.$valid}">
-              Log In
+            <button type="submit" class="btn btn-large p-x-2" ng-if="!loggingIn" ng-click="submit();">
+              LogIn
             </button>
             <button type="submit" class="btn btn-large p-x-2 btn-inverse btn-loading" ng-if="loggingIn">
-              Logging In<span>.</span><span>.</span><span>.</span>
+              Logging..<span>.</span><span>.</span><span>.</span>
             </button>
             <div class="small login-button-forgot-password">
-              <a href="user/password/send-reset-email">
+              <a href="https://oneportal.lgatelecom.net/pwm/public/forgottenusername">
+                Forgot your username?
+              </a>
+            </div>
+            <div class="small login-button-forgot-password">
+              <a href="https://oneportal.lgatelecom.net/pwm/public/forgottenpassword">
                 Forgot your password?
               </a>
             </div>
@@ -106,6 +109,5 @@
         </form>
       </div>
       <div class="clearfix"></div>
-    </div>
   </div>
 </div>
