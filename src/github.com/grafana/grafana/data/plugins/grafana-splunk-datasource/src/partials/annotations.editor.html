@@ -1,0 +1,34 @@
+<div class="gf-form-group">
+  <div class="gf-form">
+    <span class="gf-form-label width-11">Splunk search</span>
+    <input type="text"
+      class="gf-form-input"
+      ng-model='ctrl.annotation.search'
+      placeholder="">
+    </input>
+  </div>
+  <div class="gf-form">
+    <span class="gf-form-label width-11">Event field as text</span>
+    <input type="text"
+      class="gf-form-input width-15"
+      ng-model='ctrl.annotation.field'
+      placeholder="_raw">
+    </input>
+    <span class="gf-form-label width-5">Regex</span>
+    <input type="text"
+      class="gf-form-input"
+      ng-model='ctrl.annotation.regex'
+      placeholder="">
+    </input>
+  </div>
+</div>
+<div class="gf-form-group">
+  <div class="gf-form">
+    <span class="gf-form-label width-11">Or Splunk alert name</span>
+    <input type="text"
+      class="gf-form-input"
+      ng-model='ctrl.annotation.alert'
+      placeholder="Leave blank to get all alerts">
+    </input>
+  </div>
+</div>

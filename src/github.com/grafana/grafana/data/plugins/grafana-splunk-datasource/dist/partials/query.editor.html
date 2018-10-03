@@ -1,0 +1,286 @@
+<query-editor-row query-ctrl="ctrl" can-collapse="true" has-text-edit-mode="true">
+
+  <!-- Raw editor -->
+  <div ng-if="ctrl.target.rawQuery">
+    <div class="gf-form-inline" >
+      <div class="gf-form gf-form--grow">
+        <label class="gf-form-label query-keyword width-7">Search</label>
+        <input type="text" class="gf-form-input"
+          ng-model="ctrl.target.query"
+          spellcheck="false"
+          ng-blur="ctrl.onChangeInternal()">
+        </input>
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-7">Namespace</label>
+        <input type="text" class="gf-form-input max-width-12"
+          ng-model="ctrl.target.namespace"
+          bs-typeahead="ctrl.getAppsTypeAhead"
+          data-min-length=0 data-items=100
+          ng-blur="ctrl.onChangeInternal()">
+        </input>
+      </div>
+      <div class="gf-form">
+        <label class="gf-form-label">Format as</label>
+        <div class="gf-form-select-wrapper">
+          <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.resultFormat" ng-options="f.value as f.text for f in ctrl.resultFormats" ng-change="ctrl.onChangeInternal()"></select>
+        </div>
+      </div>
+      <div class="gf-form gf-form--grow">
+        <div class="gf-form-label gf-form-label--grow"></div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="!ctrl.target.rawQuery">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-7">Index</label>
+        <metric-segment-model property="ctrl.target.index"
+          get-options="ctrl.getIndexSegments()"
+          on-change="ctrl.onMetricChange()"
+          css-class="width-10">
+        </metric-segment-model>
+      </div>
+
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-9">Source Type</label>
+        <metric-segment-model property="ctrl.target.sourcetype"
+          get-options="ctrl.getSourcetypeSegments()"
+          on-change="ctrl.onSourceChange()"
+          css-class="width-10">
+        </metric-segment-model>
+      </div>
+
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-8">Namespace</label>
+        <input type="text" class="gf-form-input max-width-12" ng-model="ctrl.target.namespace" bs-typeahead="ctrl.getAppsTypeAhead"
+          data-min-length=0 data-items=100 ng-blur="ctrl.onChangeInternal()">
+        </input>
+      </div>
+
+      <div class="gf-form gf-form--grow">
+        <div class="gf-form-label gf-form-label--grow"></div>
+      </div>
+    </div>
+
+    <div class="gf-form-inline"
+      ng-repeat="agg in ctrl.target.metricAggs"
+      ng-class="{'gf-form-disabled': agg.hide}">
+
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-7">
+          Metric
+          &nbsp;
+          <a ng-click="ctrl.toggleShowMetric(agg)"
+            bs-tooltip="'Click to toggle show / hide metric'">
+            <i class="fa fa-eye" ng-hide="agg.hide"></i>
+            <i class="fa fa-eye-slash" ng-show="agg.hide"></i>
+          </a>
+        </label>
+      </div>
+
+      <div class="gf-form">
+        <metric-segment-model property="agg.func"
+          options="ctrl.getMetricAggTypes()"
+          on-change="ctrl.onChangeInternal()"
+          custom="true"
+          css-class="width-10">
+        </metric-segment-model>
+        <metric-segment-model property="agg.field"
+          get-options="ctrl.getFieldSegments()"
+          on-change="ctrl.onMetricChange()"
+          css-class="width-12">
+        </metric-segment-model>
+      </div>
+
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-3">as</label>
+        <input type="text"
+          class="gf-form-input max-width-12"
+          ng-model="agg.alias"
+          ng-blur="ctrl.onChangeInternal()">
+        </input>
+      </div>
+
+      <div class="gf-form gf-form--grow">
+        <div class="gf-form-label gf-form-label--grow"></div>
+      </div>
+
+      <div class="gf-form">
+        <label class="gf-form-label" ng-if="$last">
+          <a class="pointer" ng-click="ctrl.addMetricAgg()">
+            <i class="fa fa-plus"></i>
+          </a>
+        </label>
+        <label class="gf-form-label" ng-if="ctrl.target.metricAggs.length > 1">
+          <a class="pointer" ng-click="ctrl.removeMetricAgg($index)">
+            <i class="fa fa-minus"></i>
+          </a>
+        </label>
+      </div>
+    </div>
+
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-7">Split by</label>
+      </div>
+      <div class="gf-form" ng-repeat="segment in ctrl.splitBySegments">
+        <metric-segment segment="segment" class="width-10"
+          get-options="ctrl.getSplitBySegment()"
+          on-change="ctrl.splitBySegmentChanged(segment, $index)">
+        </metric-segment>
+      </div>
+
+      <div class="gf-form-inline" ng-if="ctrl.target.resultFormat === 'time_series'">
+        <div class="gf-form" ng-class="{'gf-form-disabled': ctrl.disableWhereEditor()}">
+          <label class="gf-form-label query-keyword width-7">Where</label>
+        </div>
+
+        <metric-segment-model ng-hide="ctrl.disableWhereEditor() || !ctrl.target.whereClause.type"
+          property="ctrl.target.whereClause.agg"
+          options="ctrl.getMetricAggTypes()"
+          on-change="ctrl.onChangeInternal()"
+          custom="true"
+          ng-class="{'gf-form-disabled': ctrl.disableWhereEditor()}">
+        </metric-segment-model>
+        <div class="gf-form"
+          ng-repeat="segment in ctrl.whereSegments"
+          ng-hide="ctrl.disableWhereEditor()"
+          ng-class="{'gf-form-disabled': ctrl.disableWhereEditor()}">
+          <metric-segment segment="segment"
+            get-options="ctrl.getWhereSegment($index)"
+            on-change="ctrl.whereSegmentChanged()">
+          </metric-segment>
+        </div>
+        <div class="gf-form" ng-hide="ctrl.disableWhereEditor() || !ctrl.target.whereClause.type">
+          <input type="number"
+            class="gf-form-input max-width-7"
+            ng-model="ctrl.target.whereClause.value"
+            ng-blur="ctrl.onChangeInternal()">
+          </input>
+        </div>
+      </div>
+      <div class="gf-form gf-form--grow">
+        <div class="gf-form-label gf-form-label--grow"></div>
+      </div>
+    </div>
+
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label width-7">Format as</label>
+        <div class="gf-form-select-wrapper">
+          <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.resultFormat" ng-options="f.value as f.text for f in ctrl.resultFormats" ng-change="ctrl.onResultFormatChange()"></select>
+        </div>
+      </div>
+
+      <div class="gf-form gf-form--grow">
+        <label class="gf-form-label gf-form-label--grow">
+          <a ng-click="ctrl.toggleOptions()">
+            Options&nbsp;
+            <i class="fa fa-caret-down" ng-show="ctrl.showOptions"></i>
+            <i class="fa fa-caret-right" ng-hide="ctrl.showOptions"></i>
+            {{ctrl.settingsLinkText}}
+          </a>
+        </label>
+      </div>
+    </div>
+
+    <!-- Options -->
+    <div class="gf-form-group" ng-if="ctrl.showOptions">
+
+      <!-- span -->
+      <div class="gf-form offset-width-7">
+        <label class="gf-form-label width-10">Span</label>
+        <metric-segment-model property="ctrl.target.tcOptions.span" css-class="width-7"
+          get-options="ctrl.getSpan()"
+          on-change="ctrl.onOptionChange()">
+        </metric-segment-model>
+      </div>
+
+      <!-- limit -->
+      <div class="gf-form offset-width-7">
+        <label class="gf-form-label width-10" tooltip="ssasa">Limit</label>
+        <input type="number"
+          class="gf-form-input width-6"
+          ng-model="ctrl.target.options.limit"
+          placeholder="0" data-placement="right"
+          ng-blur="ctrl.onOptionChange()">
+        </input>
+      </div>
+
+      <!-- useother -->
+      <div class="gf-form-inline">
+        <gf-form-switch class="gf-form offset-width-7"
+          label-class="width-10" switch-class="max-width-5"
+          label="useother"
+          checked="ctrl.target.tcOptions.useother"
+          tooltip="Specifies if a series should be added for data series not included in the graph because they did not meet the criteria of the <where-clause>."
+          on-change="ctrl.onOptionChange()">
+        </gf-form-switch>
+        <div class="gf-form" ng-show="ctrl.target.tcOptions.useother">
+          <input type="text"
+            class="gf-form-input max-width-12"
+            ng-model="ctrl.target.tcOptions.otherstr"
+            placeholder="OTHER"
+            ng-blur="ctrl.onOptionChange()">
+          </input>
+        </div>
+      </div>
+
+      <!-- usenull -->
+      <div class="gf-form-inline">
+        <gf-form-switch class="gf-form offset-width-7"
+          label-class="width-10" switch-class="max-width-5"
+          label="usenull"
+          checked="ctrl.target.tcOptions.usenull"
+          tooltip="Controls whether or not a series is created for events that do not contain the split-by field."
+          on-change="ctrl.onOptionChange()">
+        </gf-form-switch>
+        <div class="gf-form" ng-show="ctrl.target.tcOptions.usenull">
+          <input type="text"
+            class="gf-form-input max-width-12"
+            ng-model="ctrl.target.tcOptions.nullstr"
+            placeholder="NULL"
+            ng-blur="ctrl.onOptionChange()">
+          </input>
+        </div>
+      </div>
+
+      <!-- cont -->
+      <div class="gf-form-inline">
+        <gf-form-switch class="gf-form offset-width-7"
+          label-class="width-10" switch-class="max-width-5"
+          label="Continuous"
+          checked="ctrl.target.options.cont"
+          tooltip="Specifies whether the chart is continuous or not. If set to true, the Search application fills in the time gaps."
+          on-change="ctrl.onOptionChange()">
+        </gf-form-switch>
+      </div>
+
+      <!-- partial -->
+      <div class="gf-form-inline">
+        <gf-form-switch class="gf-form offset-width-7"
+          label-class="width-10" switch-class="max-width-5"
+          label="Partial"
+          checked="ctrl.target.options.partial"
+          tooltip="Controls if partial time bins should be retained or not. Only the first and last bin can be partial."
+          on-change="ctrl.onOptionChange()">
+        </gf-form-switch>
+      </div>
+
+      <!-- bins -->
+      <div class="gf-form offset-width-7">
+        <label class="gf-form-label width-10">Bins</label>
+        <input type="number"
+          class="gf-form-input width-6"
+          ng-model="ctrl.target.binOptions.bins"
+          placeholder="100" data-placement="right"
+          ng-blur="ctrl.onOptionChange()">
+        </input>
+      </div>
+    </div>
+  </div>
+</query-editor-row>

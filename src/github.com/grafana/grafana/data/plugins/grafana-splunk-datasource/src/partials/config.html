@@ -1,0 +1,124 @@
+<datasource-http-settings current="ctrl.current" suggest-url="https://localhost:8089">
+</datasource-http-settings>
+
+<h3 class="page-heading">Data source details</h3>
+
+<div class="gf-form-group">
+  <div class="gf-form-inline">
+    <gf-form-switch class="gf-form"
+                  label="Advanced options"
+         checked="ctrl.current.jsonData.advancedOptions" label-class="width-10" switch-class="max-width-6">
+    </gf-form-switch>
+  </div>
+</div>
+
+<div class="gf-form-group" ng-if="ctrl.current.jsonData.advancedOptions">
+  <div class="gf-form-inline" ng-if="ctrl.current.jsonData.advancedOptions">
+    <gf-form-switch class="gf-form" label-class="width-10" switch-class="max-width-6"
+      label="Stream Mode"
+      tooltip="Get data as they become available (experimental feature)"
+      checked="ctrl.current.jsonData.streamMode">
+    </gf-form-switch>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-10">
+        Auto cancel
+        <info-popover mode="right-normal">
+          If specified, the job automatically cancels after this many seconds of inactivity. (0 means never auto-cancel)
+        </info-popover>
+      </label>
+      <input class="gf-form-input max-width-4" type="number" ng-model='ctrl.current.jsonData.autoCancel' placeholder="30"></input>
+    </div>
+    <div class="gf-form">
+      <label class="gf-form-label width-10">
+        Status buckets
+        <info-popover mode="right-normal">
+          The most status buckets to generate.
+          0 indicates to not generate timeline information.
+        </info-popover>
+      </label>
+      <input class="gf-form-input max-width-5" type="number" ng-model='ctrl.current.jsonData.statusBuckets' placeholder="300"></input>
+    </div>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-14">
+        Search polling interval
+        <info-popover mode="right-normal">
+          Search result polling intervals in milliseconds. Interval for next poll choosing randomly from [min, max)
+        </info-popover>
+      </label>
+    </div>
+    <div class="gf-form">
+      <span class="gf-form-label width-5">
+        Min
+      </span>
+      <input class="gf-form-input max-width-5" type="number"  ng-model='ctrl.current.jsonData.minPollInterval' placeholder="500"></input>
+    </div>
+    <div class="gf-form">
+      <span class="gf-form-label width-5">
+        Max
+      </span>
+      <input class="gf-form-input max-width-5" type="number"  ng-model='ctrl.current.jsonData.maxPollInterval' placeholder="3000"></input>
+    </div>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-14">
+        Time stamp field
+        <info-popover mode="right-normal">
+          Default time stamp field
+        </info-popover>
+      </label>
+      <input class="gf-form-input max-width-15" type="text"
+        ng-model='ctrl.current.jsonData.tsField'
+        placeholder="_time">
+      </input>
+    </div>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-14">
+        Internal field pattern
+        <info-popover mode="right-normal">
+          Regex pattern for removing internal fields from result
+        </info-popover>
+      </label>
+      <input class="gf-form-input max-width-15" type="text"
+        ng-model='ctrl.current.jsonData.internalFieldPattern'
+        placeholder="^_.+">
+      </input>
+    </div>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form max-width-30">
+      <label class="gf-form-label width-14">
+        Fields search mode
+        <info-popover mode="right-normal">
+          quick - use first available result from preview
+          full - wait for job finish
+        </info-popover>
+      </label>
+      <div class="gf-form-select-wrapper max-width-8">
+        <select class="gf-form-input" ng-model="ctrl.current.jsonData.fieldSearchType" ng-options="f for f in ['quick', 'full']"></select>
+      </div>
+    </div>
+  </div>
+
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label width-14">
+        Default earliest time
+        <info-popover mode="right-normal">
+          Earliest time for searches without time range (such as template variable queries).
+        </info-popover>
+      </label>
+      <input class="gf-form-input max-width-8" type="text" ng-model='ctrl.current.jsonData.defaultEarliestTime' placeholder="-1hr"></input>
+    </div>
+</div>

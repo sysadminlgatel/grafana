@@ -1,0 +1,35 @@
+{
+  "name": "Splunk",
+  "id": "grafana-splunk-datasource",
+  "type": "datasource",
+
+  "partials": {
+    "config": "public/app/plugins/datasource/grafana-splunk-datasource/partials/config.html"
+  },
+
+  "metrics": true,
+  "annotations": true,
+
+  "info": {
+    "description": "Splunk datasource",
+    "author": {
+      "name": "Grafana Labs",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/splunk_logo_128.png",
+      "large": "img/splunk_logo_128.png"
+    },
+    "links": [
+      {"name": "Website", "url": "https://grafana.com/plugins/grafana-splunk-datasource"},
+      {"name": "License", "url": "https://grafana.com/plugins/grafana-splunk-datasource/license"}
+    ],
+    "version": "1.0.0-rc.2",
+    "updated": "2017-06-20"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "3.x 4.x",
+    "plugins": []
+  }
+}
