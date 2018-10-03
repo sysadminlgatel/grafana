@@ -55,8 +55,8 @@ select:-webkit-autofill:focus {
   height: 3rem;
   border-radius: 10px;
   padding-left: 1.25rem;
-  background: $black;
-  color: #fbfbfb;
+  background: $white;
+  color: #dark-3;
   
   &:focus {
     border: 1px solid $login-border;
