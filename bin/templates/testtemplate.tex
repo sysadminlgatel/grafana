@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx,fancyhdr}
+\usepackage{textcomp}
+\usepackage[sfdefault]{roboto}
+\fancyhead[R]{}
+\fancyhead[L]{\includegraphics[width=2cm]{/opt/testingrepo/public/img/logo.png}}
+\fancyfoot[L]{\footnotesize Confidential | Powered by LGA NetDefense\textregistered}
+\fancyfoot[R]{\footnotesize Downloaded at [[.ToFormatted]]}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\usepackage[margin=1in]{geometry}
+\graphicspath{ {images/} }
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+\begin{document}
+\begin{titlingpage}
+\thispagestyle{fancy}
+\title{[[.Title]] [[if .VariableValues]] \\ \large [[.VariableValues]] [[end]] [[if .Description]] \\ \small [[.Description]] [[end]]}
+\begingroup
+\fontseries{t}\selectfont
+\date{[[.FromFormatted]]\\to\\[[.ToFormatted]]}
+\maketitle
+\thispagestyle{fancy}
+\end{titlingpage}
+\begin{center}
+[[range .Panels]][[if .IsSingleStat]]\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\textwidth]{image[[.Id]]}
+\thispagestyle{fancy}
+\end{minipage}
+[[else]]\par
+\vspace{0.5cm}
+\includegraphics[width=\textwidth]{image[[.Id]]}
+\thispagestyle{fancy}
+\par
+\vspace{0.5cm}
+[[end]][[end]]
+\thispagestyle{fancy}
+\end{center}
+\endgroup
+\end{document}
