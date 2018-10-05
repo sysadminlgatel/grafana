@@ -154,7 +154,7 @@ export class PanelCtrl {
         icon: 'fa fa-fw fa-edit',
         shortcut: 'e',
       });
-    }
+    
 
     menu.push({
       text: 'Share',
@@ -186,6 +186,7 @@ export class PanelCtrl {
         shortcut: 'p r',
       });
     }
+  }
 
     return menu;
   }
