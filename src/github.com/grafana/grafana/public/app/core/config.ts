@@ -35,7 +35,7 @@ export class Settings {
   constructor(options) {
     const defaults = {
       datasources: {},
-      windowTitlePrefix: 'Grafana - ',
+      windowTitlePrefix: 'Oneportal - ',
       panels: {},
       newPanelTitle: 'Panel Title',
       playlist_timespan: '1m',
