@@ -46,6 +46,8 @@ export class TimePickerCtrl {
   onRefresh() {
     const time = angular.copy(this.timeSrv.timeRange());
     const timeRaw = angular.copy(time.raw);
+    //Added for time range to show for one year data
+    this.minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 1));
 
     if (!this.dashboard.isTimezoneUtc()) {
       time.from.local();
@@ -130,13 +132,13 @@ export class TimePickerCtrl {
     this.timeSrv.setTime(this.editTimeRaw);
     this.closeDropdown();
   }
-
+  // Added setHours(0,0,0,0) 
   absoluteFromChanged() {
-    this.editTimeRaw.from = this.getAbsoluteMomentForTimezone(this.absolute.fromJs);
+    this.editTimeRaw.from = this.getAbsoluteMomentForTimezone(this.absolute.fromJs.setHours(0,0,0,0));
   }
 
   absoluteToChanged() {
-    this.editTimeRaw.to = this.getAbsoluteMomentForTimezone(this.absolute.toJs);
+    this.editTimeRaw.to = this.getAbsoluteMomentForTimezone(this.absolute.toJs.setHours(0,0,0,0));
   }
 
   getAbsoluteMomentForTimezone(jsDate) {
