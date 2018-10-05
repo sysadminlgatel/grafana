@@ -159,6 +159,7 @@ export class PanelCtrl {
     menu.push({
       text: 'Share',
       click: 'ctrl.sharePanel();',
+      role: 'Editor', // added for removing share 
       icon: 'fa fa-fw fa-share',
       shortcut: 'p s',
     });
@@ -170,6 +171,7 @@ export class PanelCtrl {
     menu.push({
       text: 'More ...',
       click: '',
+      role: 'Editor', // added for removing share
       icon: 'fa fa-fw fa-cube',
       submenu: extendedMenu,
     });
