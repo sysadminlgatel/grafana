@@ -30,7 +30,8 @@
       height: params.height || '400'
     };
 
-    var timeoutMs = (parseInt(params.timeout) || 10) * 1000;
+    //var timeoutMs = (parseInt(params.timeout) || 10) * 1000;
+    var timeoutMs = 10000;
     var waitBetweenReadyCheckMs = 50;
     var totalWaitMs = 0;
 
