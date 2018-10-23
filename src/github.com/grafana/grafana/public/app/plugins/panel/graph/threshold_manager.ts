@@ -199,8 +199,10 @@ export class ThresholdManager {
       let fillColor, lineColor;
       switch (threshold.colorMode) {
         case 'critical': {
-          fillColor = 'rgba(234, 112, 112, 0.12)';
-          lineColor = 'rgba(237, 46, 24, 0.60)';
+          //fillColor = 'rgba(234, 112, 112, 0.12)';
+          //lineColor = 'rgba(237, 46, 24, 0.60)';
+          fillColor = 'transparent';
+          lineColor = 'transparent';
           break;
         }
         case 'warning': {
