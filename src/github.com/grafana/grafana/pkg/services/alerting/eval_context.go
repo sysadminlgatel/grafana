@@ -66,7 +66,7 @@ func (c *EvalContext) GetStateModel() *StateDescription {
 	case m.AlertStateAlerting:
 		return &StateDescription{
 			Color: "#D63232",
-			Text:  "Daily Report",
+			Text:  "Weekly Report",
 		}
 	default:
 		panic("Unknown rule state " + c.Rule.State)
