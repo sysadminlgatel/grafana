@@ -56,12 +56,12 @@ func (c *EvalContext) GetStateModel() *StateDescription {
 	case m.AlertStateOK:
 		return &StateDescription{
 			Color: "#36a64f",
-			Text:  "OK",
+			Text:  "Weekly Report",
 		}
 	case m.AlertStateNoData:
 		return &StateDescription{
 			Color: "#888888",
-			Text:  "No Data",
+			Text:  "Weekly Report",
 		}
 	case m.AlertStateAlerting:
 		return &StateDescription{
