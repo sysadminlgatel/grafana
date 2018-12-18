@@ -35,9 +35,6 @@ const rangeOptions = [
     display: 'This day last week',
     section: 1,
   },
-  { from: 'now-1w/w', to: 'now-1w/w', display: 'Previous week', section: 1 },
-  { from: 'now-1M/M', to: 'now-1M/M', display: 'Previous month', section: 1 },
-  { from: 'now-1y/y', to: 'now-1y/y', display: 'Previous year', section: 1 },
 
   { from: 'now-5m', to: 'now', display: 'Last 5 minutes', section: 3 },
   { from: 'now-15m', to: 'now', display: 'Last 15 minutes', section: 3 },
@@ -54,8 +51,6 @@ const rangeOptions = [
   { from: 'now-90d', to: 'now', display: 'Last 90 days', section: 0 },
   { from: 'now-6M', to: 'now', display: 'Last 6 months', section: 0 },
   { from: 'now-1y', to: 'now', display: 'Last 1 year', section: 0 },
-  { from: 'now-2y', to: 'now', display: 'Last 2 years', section: 0 },
-  { from: 'now-5y', to: 'now', display: 'Last 5 years', section: 0 },
 ];
 
 const absoluteFormat = 'MMM D, YYYY HH:mm:ss';
