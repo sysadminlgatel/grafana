@@ -125,6 +125,48 @@ export class TimePickerCtrl {
   }
 
   applyCustom() {
+
+    if(this.editTimeRaw.from._isAMomentObject == true){
+      if(this.editTimeRaw.from < this.minDate.setHours(0,0,0,0)){                 
+      	this.editTimeRaw.from = this.getAbsoluteMomentForTimezone(this.minDate.setHours(0,0,0,0));      
+      }
+    }else{
+      if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "d"){       
+        if(this.editTimeRaw.from.slice(3,-1) < -365){     
+               this.editTimeRaw.from = "now-365d";         
+                }
+      }       
+      else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "h"){    
+            if(this.editTimeRaw.from.slice(3,-1) < -8760){  
+                      this.editTimeRaw.from = "now-8760h";      
+                          }
+      }      
+       else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "y"){          
+         if(this.editTimeRaw.from.slice(3,-1) < -1){            
+         	this.editTimeRaw.from = "now-1y";          
+         }
+       }       
+       else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "w"){         
+           if(this.editTimeRaw.from.slice(3,-1) < -52){           
+            this.editTimeRaw.from = "now-52w";         
+             }            
+              }      
+               else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "M"){  
+                      if(this.editTimeRaw.from.slice(3,-1) < -12){          
+                        this.editTimeRaw.from = "now-12M";          
+                    }             
+                }      
+                 else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "m"){   
+                       if(this.editTimeRaw.from.slice(3,-1) < -525600){          
+                         this.editTimeRaw.from = "now-525600m";         
+                          }            
+                           }       
+                           else if(this.editTimeRaw.from.substr(this.editTimeRaw.from.length -1) == "s"){  
+                                          if(this.editTimeRaw.from.slice(3,-1) < -31536000){    
+                                                  this.editTimeRaw.from = "now-31536000s";        
+                                                    }
+      }
+    }
     if (this.refresh.value !== this.dashboard.refresh) {
       this.timeSrv.setAutoRefresh(this.refresh.value);
     }
@@ -134,11 +176,11 @@ export class TimePickerCtrl {
   }
   // Added setHours(0,0,0,0) 
   absoluteFromChanged() {
-    this.editTimeRaw.from = this.getAbsoluteMomentForTimezone(this.absolute.fromJs.setHours(0,0,0,0));
+    this.editTimeRaw.from = this.getAbsoluteMomentForTimezone(this.absolute.fromJs);
   }
 
   absoluteToChanged() {
-    this.editTimeRaw.to = this.getAbsoluteMomentForTimezone(this.absolute.toJs.setHours(0,0,0,0));
+    this.editTimeRaw.to = this.getAbsoluteMomentForTimezone(this.absolute.toJs);
   }
 
   getAbsoluteMomentForTimezone(jsDate) {
